@@ -8,6 +8,12 @@
 const fs = require("fs");
 require('remedial');
 
+const generateID = function () {
+	let id;
+	id = Math.floor(Math.random()*90000)+10000;
+	return id;
+} 
+
 const trait = function (req, res, query) {
 
 	let marqueurs;
@@ -40,6 +46,7 @@ const trait = function (req, res, query) {
 		nouveauMembre = {};
 		nouveauMembre.pseudo = query.pseudo;
 		nouveauMembre.password = query.password;
+		nouveauMembre.id = generateID();
 		listeMembres[listeMembres.length] = nouveauMembre;
 
 		contenu_fichier = JSON.stringify(listeMembres);
