@@ -76,6 +76,7 @@ const trait = function (req, res, query) {
 		marqueurs.id = nouveauMembre.id;
 		marqueurs.pseudo = query.pseudo;
 		marqueurs.password = query.password;
+		marqueurs.id = nouveauMembre.id 
 		page = page.supplant(marqueurs);
 	}
 
