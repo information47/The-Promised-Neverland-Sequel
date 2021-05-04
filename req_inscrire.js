@@ -73,6 +73,7 @@ const trait = function (req, res, query) {
 		page = fs.readFileSync('modele_confirmation_inscription.html', 'UTF-8');
 
 		marqueurs = {};
+		marqueurs.id = nouveauMembre.id;
 		marqueurs.pseudo = query.pseudo;
 		marqueurs.password = query.password;
 		page = page.supplant(marqueurs);
