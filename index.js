@@ -22,7 +22,10 @@ const req_identifier = require("./req_identifier.js");
 
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
-
+const req_afficher_fini_jouer = require("./req_afficher_fini_jouer.js");
+const req_accueil_membre = require("./req_accueil_membre.js");
+const req_afficher_jeu = require("./req_afficher_jeu.js");
+const req_afficher_choix_niveau = require("./req_afficher_choix_niveau.js");
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -54,6 +57,18 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_identifier':
 				req_identifier(req, res, query);
+				break;
+			case '/req_afficher_fini_jouer':
+				req_afficher_fini_jouer(req, res, query);
+				break;
+			case '/req_accueil_membre':
+				req_accueil_membre(req, res, query);
+				break;
+			case '/req_afficher_jeu':
+				req_afficher_jeu(req, res, query);
+				break;
+			case '/req_afficher_choix_niveau':
+				req_afficher_choix_niveau(req, res, query);
 				break;
 			default:
 				req_statique(req, res, query);
