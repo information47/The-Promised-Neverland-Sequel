@@ -5,15 +5,10 @@ require('remedial');
 
 const trait = function (req, res, query) {
 
-    let marqueurs;
     let page;
 
     page = fs.readFileSync('modele_choix_niveau.html', 'utf-8');
 
-    marqueurs = {}; 
-    marqueurs.erreur = ""; 
-    marqueurs.pseudo = ""; 
-    page = page.supplant(marqueurs);
 
     res.writeHead(200, { 'Content-Type': 'text/html' }); 
     res.write(page);
