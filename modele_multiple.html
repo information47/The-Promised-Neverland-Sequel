@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+		<script> type="text/javascript" src="modele_multiple.js"</script>
     </head>
     <body>
     <form action="/req_afficher_fini_jouer" method="GET">
@@ -15,6 +16,14 @@
 		</br>
 		<input type="radio" id="X" value="Trois semaines sans manger">
 		
+    	<form action="/req_af" method="GET">
+			<center><h1>{intitule}<h1>
+			<label>{reponse0}</label><input type="radio" name="nb_enfants" id="1" value="X"><br>
+			<label>{reponse1}</label><input type="radio" name="nb_enfants" id="2" value="X"><br>
+			<label>{reponse2}</label><input type="radio" name="nb_enfants" id="3" value="X"><br>
+			<label>{reponse3}</label><input type="radio" name="nb_enfants" id="4" value="X"><br>
+			<input type="hidden" name="num" value="num">
+			<input type="submit" value="envoyer">
     </form>
     </body>
 </html>
