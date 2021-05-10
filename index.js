@@ -73,6 +73,7 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_multiple':
 				req_multiple(req, res, query);
+				break;
 			default:
 				req_statique(req, res, query);
 				break;

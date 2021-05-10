@@ -13,7 +13,6 @@ const req_multiple = function (req, res, query) {
 	questions = JSON.parse(contenu);
 	
 	indice = Math.floor(Math.random() * questions.length);
-	
 	marqueurs = {};
 	marqueurs.intitule = questions[indice].question;
 	marqueurs.reponse0 = questions[indice].prop0;
