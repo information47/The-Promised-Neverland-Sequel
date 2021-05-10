@@ -14,7 +14,17 @@ const trait = function (req, res, query) {
 	listeMembres =  JSON.parse(contenu_fichier);
 	
 	//on ajoute le compteur dans la liste des comptes
+	let i;
 	
+	i = 0;
+	while(i<listeMembres.length) {
+		if (listeMembres[i].pseudo === query.pseudo) {
+				listeMembres[i].compteur = 3;
+		}
+		i++;
+	}
+	
+
 	contenu_fichier = JSON.stringify(listeMembres);
 
 	fs.writeFileSync("membres.json", contenu_fichier, 'utf-8');

@@ -14,19 +14,24 @@ function compteur(req, res, query) {
 	questions = JSON.parse(contenu);
 
 	contenu = fs.readFileSync("membres.json", "utf-8");
-	compteur = JSON.parse(contenu);
+	membres = JSON.parse(contenu);
 
-	if (query.proposition === query.reponse) {
+	if (query.proposition !== query.reponse) {
 		compteur -= 1;
 	}
 //Quand le compteur tombe à 0, le serveur renvoi au début	
-	if (compteur === 0) {
-		page = fs.readFileSync('modele_accueil_membre', 'utf-8');
+let i;
+
+while(i<listeMembres.length) {
+	if(listeMembres[i].pseudo === query.pseudo) {
+		if (membres[i].compteur === 0) {
+			page = fs.readFileSync('modele_accueil_membre', 'utf-8');
+		}
 	}
+	i++;
+}
 	marqueurs = {};
 	marqueurs.compteur = compteur.compteur;
-
-
 };
 
 module.exports = compteur;
