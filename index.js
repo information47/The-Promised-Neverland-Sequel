@@ -22,6 +22,7 @@ const req_identifier = require("./req_identifier.js");
 
 const req_statique = require("./req_statique.js");
 const req_erreur = require("./req_erreur.js");
+const req_afficher_question_simple = require("./req_afficher_question_simple.js")
 const req_afficher_fini_jouer = require("./req_afficher_fini_jouer.js");
 const req_accueil_membre = require("./req_accueil_membre.js");
 const req_commencer_jeu = require("./req_commencer_jeu.js");
@@ -65,6 +66,11 @@ const traite_requete = function (req, res) {
 			case '/req_accueil_membre':
 				req_accueil_membre(req, res, query);
 				break;
+			case '/req_afficher_question_simple':
+				req_afficher_question_simple(req, res, query);
+				break;
+			case '/req_afficher_jeu':
+				req_afficher_jeu(req, res, query);
 			case '/req_commenecer_jeu':
 				req_commencer_jeu(req, res, query);
 				break;
