@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  min-height: 100vh;
+  background: #2f3542;
+  color: #dfe4ea;
+
+  h1 {
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    font-size: 3rem;
+
+    span, i {
+      color: #ffa502;
+    }
+  }
+  h3 {
+    color: #ffa502;
+    font-size: 1.5rem;
+  }
+  .container {
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 3rem auto 3rem;
+      width: 500px;
+
+      button {
+        flex: 1 0 45%;
+        width: 200px;
+        height: 80px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        margin: .4rem;
+        outline: none;
+        background: #dfe4ea;
+        user-select: none;
+        font-weight: 600;
+
+        &:hover {
+          background: #ffa502;
+          transition: .5s;
+        }
+        &:active {
+          transform: scale(.9);
+          transition: transform .1s;
+        }
+      
+        p {
+          font-size: 1.3rem;
+          margin: 0;
+        }
+      }
+    }
+  }
+  #progress {
+    font-size: 1.3rem;
+    color: #ffa502;
+  }
+}
+
+
+/* SIGNATURE */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap');
+
+.signature {
+  display: flex;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(51, 51, 51, 0.808);
+  padding: .5rem .5rem;
+  border-radius: 50px;
+  box-shadow: 0 0 0px 3px rgb(9,251,186);
+  color: rgb(9,251,186);
+  font-family: 'Open Sans', sans-serif;
+  font-size: .7rem;
+  cursor: pointer;
+}
+.signature:hover {
+  transform: translateX(3px);
+  background: linear-gradient(90deg, rgba(51, 51, 51, 0.808) 30%, rgba(100, 100, 100, 0.808) 100% );
+  transition: .3s ease;
+  box-shadow: 0 0 0px 3px rgb(79, 250, 204);
+  color: rgb(79, 250, 204);
+}
+.signature:focus {
+  outline: none;
+}
+.signature .flag {
+  height: 13px;
+  width: 22px;
+  background: linear-gradient(90deg, blue 36%, white 36%, white 67%, red 67%);
+  box-shadow: inset 2px 2px 2px #222, 2px 2px 1px #222;
+  margin-right: 6px;
+  transform: translateY(3px);
+}
+.signature h3 {
+  margin: 0;
+  color: rgb(9,251,186);
+  font-size: 1rem;
+}
+.signature i {
+  font-size: 1.1rem;
+  text-shadow: 2px 2px 1px #222;
+  transform: translateY(2px);
+}

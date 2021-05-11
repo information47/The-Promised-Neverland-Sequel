@@ -2,29 +2,205 @@
 <html>
     <head>
         <meta charset="UTF-8">
-		<script> type="text/javascript" src="modele_multiple.js"</script>
-    </head>
-    <body>
+   		<link rel="stylesheet" type="text/css" href="modele_multiple.css">
+   </head>
     <form action="/req_afficher_fini_jouer" method="GET">
-        <p>
-        <center><h1>Lequel de ces principes ne fait pas partie de la « règle des trois » selon laquelle on ne peut survivre ? <h1>
-		Trois minutes sans air<input type="radio" id="Trois minutes sans air" value="Trois minutes sans air">
-		</br>
-		<input type="radio" id="X" value="Trois heures sans un abri">
-		</br>
-		<input type="radio" id="X" value="Trois jours sans eau">
-		</br>
-		<input type="radio" id="X" value="Trois semaines sans manger">
-		
-    	<form action="/req_af" method="GET">
-			<center><h1>{intitule}<h1>
-			<label>{reponse0}</label><input type="radio" name="nb_enfants" id="1" value="X"><br>
-			<label>{reponse1}</label><input type="radio" name="nb_enfants" id="2" value="X"><br>
-			<label>{reponse2}</label><input type="radio" name="nb_enfants" id="3" value="X"><br>
-			<label>{reponse3}</label><input type="radio" name="nb_enfants" id="4" value="X"><br>
-			<input type="hidden" name="num" value="num">
-			<input type="submit" value="envoyer">
-    </form>
+    <body>
+
+  <div class="container">
+    <div id="Enigme 1">
+      <h1><span>S</span>equel I <i class="quiz"></i></h1>
+
+      <h2 id="question"></h2>
+
+      <h3 id="score"></h3>
+
+      <div class="choices">
+        <button id="guess0" class="btn">
+          <p id="choice0"></p>
+        </button>
+
+        <button id="guess1" class="btn">
+          <p id="choice1"></p>
+        </button>
+
+        <button id="guess2" class="btn">
+          <p id="choice2"></p>
+        </button>
+
+        <button id="guess3" class="btn">
+          <p id="choice3"></p>
+        </button>
+      </div>
+
+      <p id="progress"></p>
+
+    </div>
+  </div>
+<script>
+let question,options,questionIndex,score,scoreSpan,total, playedSpan,played,numSpan,num,q_holder,a_q,a_s;
+            question = document.getElementById('q');
+            options = document.getElementsByClassName('op');
+            questionIndex = 0;
+            score = 1;
+            played = 1;
+            num = 1;
+            total = document.getElementById("total");
+            scoreSpan = document.getElementById("score");
+            playedSpan = document.getElementById("played");
+            numSpan = document.getElementById("n");
+            q_holder = document.getElementById("quiz-holder");
+            a_q = document.getElementById("a-q");
+            a_s = document.getElementById("after-score");
+            
+            questions = [
+                new Question("Which is five?",["5","7","10","12"], "5"),
+                new Question("Which is two?",["2","9","60","1"], "2"),
+                new Question("Which is Sum?",["p","&","+","%"], "+"),
+                new Question("How many days a month has?",["30","21","10","32"], "30"),
+                new Question("What is fluid?",["Milk","Rose","Marker","Bank"], "Milk"),
+                new Question("How are you?",["Fine", "Good", "Very Good", "Bad"], "Fine")
+                
+                ];
+                
+                
+            
+            
+            function Question(text, choices, answere)
+            {
+                this.text = text;
+                this.choices = choices;
+                this.answere = answere;
+                
+                this.correct = function(ans)
+                {
+                    return this.answere == ans;
+                }
+            }
+            
+           
+                
+                question.innerHTML = questions[questionIndex].text;
+                for (i = 0; i < questions[questionIndex].choices.length; i++)
+                {
+                    options[i].innerHTML = questions[questionIndex].choices[i];
+                    
+                }
+                
+                
+          
+            
+            function next(){
+                questionIndex++;
+                playedSpan.innerHTML = played++;
+                numSpan.innerHTML = num++;
+                if (questionIndex !== questions.length)
+                {
+                question.innerHTML = questions[questionIndex].text;
+                for (i = 0; i < questions[questionIndex].choices.length; i++)
+                {
+                    options[i].innerHTML = questions[questionIndex].choices[i];
+                }
+                }
+                else
+                {
+                    questionIndex = 0;
+                    played = 0;
+                    num = 0;
+                    q_holder.style.display = "none";
+                    a_q.style.display = "block";
+                    
+                    
+                }
+            }
+            
+            actionHandler();
+            
+            
+            
+            
+            
+            function actionHandler()
+            {
+                a = document.getElementById('1');
+                b = document.getElementById('2');
+                c = document.getElementById('3');
+                d = document.getElementById('4');
+                
+                
+                a.addEventListener("click", function (){
+                    if (questions[questionIndex].answere == questions[questionIndex].choices[0])
+                    {
+                        scoreSpan.innerHTML = score++;
+                    
+                        correct.play();
+                        
+                    
+                    }
+                    else
+                    {
+                       wrong.play();
+                        
+                        
+                    }
+                    
+                });
+                
+                b.addEventListener("click", function () {
+                    if (questions[questionIndex].answere == questions[questionIndex].choices[1])
+                    {
+                        scoreSpan.innerHTML = score++;
+                        
+                       correct.play();
+                    
+                        
+                    }
+                    else
+                    {
+                        wrong.play();
+                        
+                        
+                    }
+                });
+                
+                c.addEventListener("click", function () {
+                    if (questions[questionIndex].answere == questions[questionIndex].choices[2])
+                    {
+                        scoreSpan.innerHTML = score++;
+                        
+                        correct.play();
+                        
+                        
+                    }
+                    else
+                    {
+                        wrong.play();
+                        
+                        
+                    }
+                });
+                
+                d.addEventListener("click", function () {
+                    if (questions[questionIndex].answere == questions[questionIndex].choices[3])
+                    {
+                        scoreSpan.innerHTML = score++;
+                        
+                        correct.play();
+                        
+                    }
+                    else
+                    {
+                        
+                        wrong.play();
+                        
+                    }
+                });
+                
+                }
+                total.innerHTML = questions.length;
+               	
+		</script>
+	</form>
     </body>
 </html>
 
