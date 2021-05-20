@@ -3,12 +3,23 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Labyrinthe</title>
+		<link rel="stylesheet" type="text/css" href="modele_laby.css">
 	</head>
 	<body>
-		<center>
-			<div id="colonnes">
-				{plateau}
+		<div id="ensemble_laby">
+			<div id="ligne_haut">
+					{image_haut}
 			</div>
-		</center>
+			<div id="ligne_laby">
+				{image_gauche}
+					<div id="labyrinthe">
+						{plateau}
+					</div>
+				{image_droite}
+			</div>
+			<div id="ligne_bas">
+					{image_bas}
+			</div>
+		</div>
 	</body>
 </html>
