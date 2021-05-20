@@ -2,10 +2,44 @@
 <html>
     <head>
         <meta charset="UTF-8">
-		<script> type="text/javascript" src="modele_multiple.js"</script>
-    </head>
-    <body>
+   		<link rel="stylesheet" type="text/css" href="modele_multiple.css">
+   </head>
     <form action="/req_afficher_fini_jouer" method="GET">
+    <body>
+
+  <div class="container">
+    <div id="Enigme 1">
+      <h1><span>S</span>equel I <i class="quiz"></i></h1>
+
+      <h2 id="question"></h2>
+
+      <h3 id="score"></h3>
+
+      <div class="choices">
+        <button id="guess0" class="btn">
+          <p id="choice0"></p>
+        </button>
+
+        <button id="guess1" class="btn">
+          <p id="choice1"></p>
+        </button>
+
+        <button id="guess2" class="btn">
+          <p id="choice2"></p>
+        </button>
+
+        <button id="guess3" class="btn">
+          <p id="choice3"></p>
+        </button>
+      </div>
+
+      <p id="progress"></p>
+
+    </div>
+  </div>
+<script>
+	</script>
+	</form>
         <p>
         <center><h1>Lequel de ces principes ne fait pas partie de la « règle des trois » selon laquelle on ne peut survivre ? <h1>
 		Trois minutes sans air<input type="radio" id="Trois minutes sans air" value="Trois minutes sans air">
