@@ -3,62 +3,20 @@
     <head>
         <meta charset="UTF-8">
    		<link rel="stylesheet" type="text/css" href="modele_multiple.css">
+
    </head>
     <form action="/req_afficher_fini_jouer" method="GET">
-    <body>
-
-  <div class="container">
-    <div id="Enigme 1">
-      <h1><span>S</span>equel I <i class="quiz"></i></h1>
-
-      <h2 id="question"></h2>
-
-      <h3 id="score"></h3>
-
-      <div class="choices">
-        <button id="guess0" class="btn">
-          <p id="choice0"></p>
-        </button>
-
-        <button id="guess1" class="btn">
-          <p id="choice1"></p>
-        </button>
-
-        <button id="guess2" class="btn">
-          <p id="choice2"></p>
-        </button>
-
-        <button id="guess3" class="btn">
-          <p id="choice3"></p>
-        </button>
-      </div>
-
-      <p id="progress"></p>
-
-    </div>
-  </div>
-<script>
-	</script>
-	</form>
-        <p>
-        <center><h1>Lequel de ces principes ne fait pas partie de la « règle des trois » selon laquelle on ne peut survivre ? <h1>
-		Trois minutes sans air<input type="radio" id="Trois minutes sans air" value="Trois minutes sans air">
-		</br>
-		<input type="radio" id="X" value="Trois heures sans un abri">
-		</br>
-		<input type="radio" id="X" value="Trois jours sans eau">
-		</br>
-		<input type="radio" id="X" value="Trois semaines sans manger">
+</form>
+	<body>
+		<form action="questions_multiples.json" method="GET">
+    <input type="hidden" name="no_question" value="0" />
+    <h3>Lequel de ces principes ne fait pas partie de la « règle des trois » selon laquelle on ne peut survivre ? </h3>
+    <input type="submit" name="proposition" value="Trois minutes sans air " />
+    <input type="submit" name="proposition" value="Trois heures sans un abri" />
+    <input type="submit" name="proposition" value="Trois jours sans eau " />
+    <input type="submit" name="proposition" value="Trois semaines sans manger" />
+</form>
 		
-    	<form action="/req_af" method="GET">
-			<center><h1>{intitule}<h1>
-			<label>{reponse0}</label><input type="radio" name="nb_enfants" id="1" value="X"><br>
-			<label>{reponse1}</label><input type="radio" name="nb_enfants" id="2" value="X"><br>
-			<label>{reponse2}</label><input type="radio" name="nb_enfants" id="3" value="X"><br>
-			<label>{reponse3}</label><input type="radio" name="nb_enfants" id="4" value="X"><br>
-			<input type="hidden" name="num" value="num">
-			<button><a href="/req_afficher_question_simple">Envoyer</a></button>
-    </form>
     </body>
 </html>
 

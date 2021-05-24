@@ -1,6 +1,12 @@
 [
-	{ "question": "1", "prop0": "&", "prop1": "é", "prop2": "#", "prop3": "'" },
-	{ "question": "2", "prop0": "&", "prop1": "é", "prop2": "#", "prop3": "'" },
-	{ "question": "3", "prop0": "&", "prop1": "é", "prop2": "#", "prop3": "'" },
-	{ "question": "4", "prop0": "&", "prop1": "é", "prop2": "#", "prop3": "'" }
+    {
+        "question": "Lequel de ces principes ne fait pas partie de la « règle des trois » selon laquelle on ne peut survivre ? ",
+        "choices": [
+            "choice0",
+            "choice1",
+            "choice2",
+            "choice3"
+        ],
+        "correct": "choice0"
+    }
 ]
