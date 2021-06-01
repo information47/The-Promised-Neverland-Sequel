@@ -1,11 +1,20 @@
 'use strict'
 const fs = require("fs");
 
-const afficher_laby = function (map, perso) {
+const afficher_laby = function () {
 	let plateau;
 	let grille = [];
+	let marqueurs;
+	let donnees;
+	let contenu;
+	let map;
 
-	
+	//recuperation des donnees et de la map
+	contenu = fs.readFileSync("map.json", "utf-8");
+    map = JSON.parse(contenu);
+    contenu = fs.readFileSync("labyrinthe.json", "utf-8");
+    donnees = JSON.parse(contenu);
+
 	// fabrication de la grille
 	for (let i=0; i<map.length; i++){
 		grille.push([]);
@@ -21,20 +30,20 @@ const afficher_laby = function (map, perso) {
 				grille[i][j] = 3;
 			}
 			//personnage
-			if (i === perso.y && j === perso.x) {
+			if (i === donnees.perso.y && j === donnees.perso.x) {
 				grille[i][j] = 2;
 			}
 			//dalle de deplacement
-			if (i === perso.y +1 && j === perso.x && map[i][j] === 1) {
+			if (i === donnees.perso.y +1 && j === donnees.perso.x && map[i][j] === 1) {
 				grille[i][j] = "bas";
 			}
-			if (i === perso.y -1 && j === perso.x && map[i][j] === 1) {
+			if (i === donnees.perso.y -1 && j === donnees.perso.x && map[i][j] === 1) {
 				grille[i][j] = "haut";
 			}
-			if (i === perso.y && j === perso.x +1 && map[i][j] === 1) {
+			if (i === donnees.perso.y && j === donnees.perso.x +1 && map[i][j] === 1) {
 				grille[i][j] = "droite";
 			}
-			if (i === perso.y && j === perso.x -1 && map[i][j] === 1) {
+			if (i === donnees.perso.y && j === donnees.perso.x -1 && map[i][j] === 1) {
 				grille[i][j] = "gauche";
 			}
 		}	
@@ -47,28 +56,28 @@ const afficher_laby = function (map, perso) {
 		for (let j=0; j<grille[i].length; j++){
 			switch (grille[i][j]) {
 				case 1 :
-					plateau += `<img src="dalle2.png">`;
+					plateau += `<img class="cellule" src="dalle2.png">`;
 					break;
 				case 0 :
-					plateau += `<img src="grass.png">`;
+					plateau += `<img class="cellule" src="grass.png">`;
 					break;
 				case 2 :
-					plateau += `<img src="dalle_emma.png">`;
+					plateau += `<img class="cellule" src="dalle_emma.png">`;
 					break;
 				case 3 :	
-					plateau += `<img src="dalle_bleue.png">`;
+					plateau += `<img class="cellule" src="dalle_bleue.png">`;
 					break;
 				case 'bas' :
-					plateau += `<a href="req_deplacement?direction=bas"><img src="dalle_deplacement.png"></a>`;
+					plateau += `<a href="req_deplacement?direction=bas"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
 				case 'haut' :
-					plateau += `<a href="req_deplacement?direction=haut"><img src="dalle_deplacement.png"></a>`;
+					plateau += `<a href="req_deplacement?direction=haut"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
 				case 'droite' :
-					plateau += `<a href="req_deplacement?direction=droite"><img src="dalle_deplacement.png"></a>`;
+					plateau += `<a href="req_deplacement?direction=droite"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
 				case 'gauche' :
-					plateau += `<a href="req_deplacement?direction=gauche"><img src="dalle_deplacement.png"></a>`;
+					plateau += `<a href="req_deplacement?direction=gauche"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
 				default :
 					break;
@@ -76,7 +85,19 @@ const afficher_laby = function (map, perso) {
 		}
 		plateau += "</div>";
 	}
-	return plateau;
+	//marqueurs
+	marqueurs = {}; 
+    marqueurs.plateau = plateau;
+
+    marqueurs.image_haut = `<img class="monstre" src="carreBleu.png">`
+    marqueurs.image_gauche =  `<img class="monstre" src="carreJaune.png">`
+    marqueurs.image_droite =  `<img class="monstre" src="carreRouge.jpeg">`
+    marqueurs.image_bas =  `<img class="monstre" src="mujika2.png">`
+
+    marqueurs.vie = donnees.vie;
+	
+
+	return marqueurs;
 };
 
 module.exports = afficher_laby;

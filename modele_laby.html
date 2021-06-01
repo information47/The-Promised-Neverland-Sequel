@@ -8,18 +8,30 @@
 	<body>
 		<div id="ensemble_laby">
 			<div id="ligne_haut">
-					{image_haut}
+				{image_haut}
 			</div>
 			<div id="ligne_laby">
 				{image_gauche}
-					<div id="labyrinthe">
-						{plateau}
-					</div>
+				<div id="labyrinthe">
+					{plateau}
+				</div>
 				{image_droite}
-			</div>
+						</div>
 			<div id="ligne_bas">
-					{image_bas}
+				{image_bas}
 			</div>
-		</div>
+		</div>	
+			<div id='sorts'>
+				<a href=""><img id="deplacement_rapide"src="deplacement_rapide.png"></a>
+				<a href=""><img src="decalage.png"></a>
+				<a href=""><img src="placidite.png"></a>
+				<a href=""><img src="ragekit.png"></a>
+			</div>
+			<a href="">Terminer le tour</a>
+			<div>
+				<p>points de vie: {vie}</p>
+				<p>energie: {energie}</p>
+				<p>deplacements disponibles: {deplacemeents}</p>
+			</div>
 	</body>
 </html>

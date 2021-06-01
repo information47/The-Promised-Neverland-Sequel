@@ -1,9 +1,21 @@
 body {
 	background-color: #2a2a2e;
+	display: flex;
+	flex-direction: row;
 }
-img {
+p {
+	color: white;
+}
+.cellule {
 	width: 35px;
 	height: 35px;
+}
+.monstre {
+	width: 43px;
+	height: 43px;
+}
+#deplacement_rapide {
+	margin-left: 70px;
 }
 #labyrinthe {
 	line-height: 1px;
