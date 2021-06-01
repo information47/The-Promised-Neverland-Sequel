@@ -95,7 +95,8 @@ const afficher_laby = function () {
     marqueurs.image_bas =  `<img class="monstre" src="mujika2.png">`
 
     marqueurs.vie = donnees.vie;
-	
+	marqueurs.energie = donnees.energie;
+	marqueurs.deplacements = donnees.pm;
 
 	return marqueurs;
 };
