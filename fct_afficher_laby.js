@@ -1,5 +1,6 @@
 'use strict'
 const fs = require("fs");
+const dalle_dep = require("./fct_dalle_deplacement");
 
 const afficher_laby = function () {
 	let plateau;
@@ -8,53 +9,45 @@ const afficher_laby = function () {
 	let donnees;
 	let contenu;
 	let map;
-
+	let liste_visite;
 	//recuperation des donnees et de la map
 	contenu = fs.readFileSync("map.json", "utf-8");
     map = JSON.parse(contenu);
     contenu = fs.readFileSync("labyrinthe.json", "utf-8");
     donnees = JSON.parse(contenu);
-
+	//checkpoint
 	// fabrication de la grille
 	for (let i=0; i<map.length; i++){
-		grille.push([]);
 		for (let j=0; j<map[i].length; j++){
+			grille.push([]);
 			// herbe ou dalle
 			if (map[i][j] === 1) {
-				grille[i].push(1);
+				grille[i][j] = {code: 1};
 			} else if (map[i][j] === 0) {
-				grille[i].push(0);
+				grille[i][j] = {code: 0};
 			}
 			// arrivée
 			if (i === 0 && j === 0) {
-				grille[i][j] = 3;
+				grille[i][j] = {code: 3};
 			}
 			//personnage
 			if (i === donnees.perso.y && j === donnees.perso.x) {
-				grille[i][j] = 2;
+				grille[i][j] = {code: 2};
 			}
-			//dalle de deplacement
-			if (i === donnees.perso.y +1 && j === donnees.perso.x && map[i][j] === 1) {
-				grille[i][j] = "bas";
-			}
-			if (i === donnees.perso.y -1 && j === donnees.perso.x && map[i][j] === 1) {
-				grille[i][j] = "haut";
-			}
-			if (i === donnees.perso.y && j === donnees.perso.x +1 && map[i][j] === 1) {
-				grille[i][j] = "droite";
-			}
-			if (i === donnees.perso.y && j === donnees.perso.x -1 && map[i][j] === 1) {
-				grille[i][j] = "gauche";
-			}
-		}	
+		}
 	}
+	//dalle de deplacement
+	liste_visite = dalle_dep(map, donnees.perso, donnees.pm);
 
+	for (let i=0; i<liste_visite.length; i++) {
+		grille[liste_visite[i].y][liste_visite[i].x] = {code: "dep", y: liste_visite[i].y, x: liste_visite[i].x}
+	}
 	// retranscription de la grille en html
 	plateau = "";
 	for (let i=0; i<grille.length; i++){
 		plateau += "<div>"
 		for (let j=0; j<grille[i].length; j++){
-			switch (grille[i][j]) {
+			switch (grille[i][j].code) {
 				case 1 :
 					plateau += `<img class="cellule" src="dalle2.png">`;
 					break;
@@ -67,16 +60,16 @@ const afficher_laby = function () {
 				case 3 :	
 					plateau += `<img class="cellule" src="dalle_bleue.png">`;
 					break;
-				case 'bas' :
-					plateau += `<a href="req_deplacement?direction=bas"><img class="cellule" src="dalle_deplacement.png"></a>`;
+				case "dep":
+					plateau += `<a href="req_deplacement?y=${i}&x=${j}"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
-				case 'haut' :
+				case 'h' :
 					plateau += `<a href="req_deplacement?direction=haut"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
-				case 'droite' :
+				case 'd' :
 					plateau += `<a href="req_deplacement?direction=droite"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
-				case 'gauche' :
+				case 'g' :
 					plateau += `<a href="req_deplacement?direction=gauche"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
 				default :

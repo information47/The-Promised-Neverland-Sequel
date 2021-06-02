@@ -16,21 +16,8 @@ const req_deplacement = function (req, res, query) {
     donnees = JSON.parse(contenu);
 
 	//algo
-	switch (query.direction) {
-		case 'haut' :
-			donnees.perso.y --;
-			break;
-		case 'bas' :
-			donnees.perso.y ++;
-			break;
-		case 'droite' :
-			donnees.perso.x ++;
-			break;
-		case 'gauche' :
-			donnees.perso.x --;
-			break;
-	}
-
+	donnees.perso.y = Number(query.y);
+	donnees.perso.x = Number(query.x);
 	//stringify + appel fonction afficher_laby
 	contenu = JSON.stringify(donnees);
 	fs.writeFileSync("labyrinthe.json",contenu, "utf-8");

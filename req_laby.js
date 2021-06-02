@@ -3,6 +3,7 @@
 require('remedial')
 const fs = require("fs");
 const afficher_laby = require("./fct_afficher_laby");
+
 const req_laby = function(req, res, query) {
 	let contenu;
 	let marqueurs;

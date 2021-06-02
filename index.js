@@ -29,7 +29,6 @@ const req_commencer_jeu = require("./req_commencer_jeu.js");
 const req_afficher_choix_niveau = require("./req_afficher_choix_niveau.js");
 const req_multiple = require("./req_multiple.js");
 const req_laby = require("./req_laby.js");
-const req_afficher_image = require("./req_afficher_image.js");
 const req_deplacement = require("./req_deplacement.js");
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
