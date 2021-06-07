@@ -43,7 +43,7 @@ const trait = function (req, res, query) {
 		page = fs.readFileSync('modele_accueil.html', 'utf-8');
 
 		marqueurs = {};
-		marqueurs.erreur = "ERREUR : compte ou mot de passe incorrect";
+		marqueurs.erreur = '<p class="erreur">ERREUR : compte ou mot de passe incorrect</p>';
 		marqueurs.pseudo = query.pseudo;
 		page = page.supplant(marqueurs);
 
