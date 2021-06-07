@@ -1,7 +1,7 @@
 'use strict'
 const fs = require("fs");
 const dalle_dep = require("./fct_dalle_deplacement");
-
+const prevision = require("./fct_prevision")
 const afficher_laby = function () {
 	let plateau;
 	let grille = [];
@@ -40,7 +40,7 @@ const afficher_laby = function () {
 	liste_visite = dalle_dep(map, donnees.perso, donnees.pm);
 
 	for (let i=0; i<liste_visite.length; i++) {
-		grille[liste_visite[i].y][liste_visite[i].x] = {code: "dep", y: liste_visite[i].y, x: liste_visite[i].x}
+		grille[liste_visite[i].y][liste_visite[i].x] = {code: "dep", y: liste_visite[i].y, x: liste_visite[i].x, pm: liste_visite[i].pm}
 	}
 	// retranscription de la grille en html
 	plateau = "";
@@ -61,16 +61,7 @@ const afficher_laby = function () {
 					plateau += `<img class="cellule" src="dalle_bleue.png">`;
 					break;
 				case "dep":
-					plateau += `<a href="req_deplacement?y=${i}&x=${j}"><img class="cellule" src="dalle_deplacement.png"></a>`;
-					break;
-				case 'h' :
-					plateau += `<a href="req_deplacement?direction=haut"><img class="cellule" src="dalle_deplacement.png"></a>`;
-					break;
-				case 'd' :
-					plateau += `<a href="req_deplacement?direction=droite"><img class="cellule" src="dalle_deplacement.png"></a>`;
-					break;
-				case 'g' :
-					plateau += `<a href="req_deplacement?direction=gauche"><img class="cellule" src="dalle_deplacement.png"></a>`;
+					plateau += `<a href="req_deplacement?y=${i}&x=${j}&pm=${grille[i][j].pm}"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
 				default :
 					break;
@@ -88,8 +79,17 @@ const afficher_laby = function () {
     marqueurs.image_bas =  `<img class="monstre" src="mujika2.png">`
 
     marqueurs.vie = donnees.vie;
-	marqueurs.energie = donnees.energie;
+	marqueurs.pa = donnees.pa;
 	marqueurs.deplacements = donnees.pm;
+
+	marqueurs.previ0 = donnees.prevision[0];
+	marqueurs.previ1 = donnees.prevision[1];
+	marqueurs.previ2 = donnees.prevision[2];
+	marqueurs.previ3 = donnees.prevision[3];
+	marqueurs.previ4 = donnees.prevision[4];
+	marqueurs.previ5 = donnees.prevision[5];
+	marqueurs.previ6 = donnees.prevision[6];
+	marqueurs.previ7 = donnees.prevision[7];
 
 	return marqueurs;
 };
