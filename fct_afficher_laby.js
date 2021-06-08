@@ -1,74 +1,76 @@
 'use strict'
 const fs = require("fs");
+const dalle_dep = require("./fct_dalle_deplacement");
 
-const afficher_laby = function (map, perso) {
+const afficher_laby = function () {
 	let plateau;
 	let grille = [];
-
-	
+	let marqueurs;
+	let donnees;
+	let contenu;
+	let map;
+	let liste_visite;
+	//recuperation des donnees et de la map
+	contenu = fs.readFileSync("map.json", "utf-8");
+    map = JSON.parse(contenu);
+    contenu = fs.readFileSync("labyrinthe.json", "utf-8");
+    donnees = JSON.parse(contenu);
+	//checkpoint
 	// fabrication de la grille
 	for (let i=0; i<map.length; i++){
-		grille.push([]);
 		for (let j=0; j<map[i].length; j++){
+			grille.push([]);
 			// herbe ou dalle
 			if (map[i][j] === 1) {
-				grille[i].push(1);
+				grille[i][j] = {code: 1};
 			} else if (map[i][j] === 0) {
-				grille[i].push(0);
+				grille[i][j] = {code: 0};
 			}
 			// arrivée
 			if (i === 0 && j === 0) {
-				grille[i][j] = 3;
+				grille[i][j] = {code: 3};
 			}
 			//personnage
-			if (i === perso.y && j === perso.x) {
-				grille[i][j] = 2;
+			if (i === donnees.perso.y && j === donnees.perso.x) {
+				grille[i][j] = {code: 2};
 			}
-			//dalle de deplacement
-			if (i === perso.y +1 && j === perso.x && map[i][j] === 1) {
-				grille[i][j] = "bas";
-			}
-			if (i === perso.y -1 && j === perso.x && map[i][j] === 1) {
-				grille[i][j] = "haut";
-			}
-			if (i === perso.y && j === perso.x +1 && map[i][j] === 1) {
-				grille[i][j] = "droite";
-			}
-			if (i === perso.y && j === perso.x -1 && map[i][j] === 1) {
-				grille[i][j] = "gauche";
-			}
-		}	
+		}
 	}
+	//dalle de deplacement
+	liste_visite = dalle_dep(map, donnees.perso, donnees.pm);
 
+	for (let i=0; i<liste_visite.length; i++) {
+		grille[liste_visite[i].y][liste_visite[i].x] = {code: "dep", y: liste_visite[i].y, x: liste_visite[i].x}
+	}
 	// retranscription de la grille en html
 	plateau = "";
 	for (let i=0; i<grille.length; i++){
 		plateau += "<div>"
 		for (let j=0; j<grille[i].length; j++){
-			switch (grille[i][j]) {
+			switch (grille[i][j].code) {
 				case 1 :
-					plateau += `<img src="dalle2.png">`;
+					plateau += `<img class="cellule" src="dalle2.png">`;
 					break;
 				case 0 :
-					plateau += `<img src="grass.png">`;
+					plateau += `<img class="cellule" src="grass.png">`;
 					break;
 				case 2 :
-					plateau += `<img src="dalle_emma.png">`;
+					plateau += `<img class="cellule" src="dalle_emma.png">`;
 					break;
 				case 3 :	
-					plateau += `<img src="dalle_bleue.png">`;
+					plateau += `<img class="cellule" src="dalle_bleue.png">`;
 					break;
-				case 'bas' :
-					plateau += `<a href="req_deplacement?direction=bas"><img src="dalle_deplacement.png"></a>`;
+				case "dep":
+					plateau += `<a href="req_deplacement?y=${i}&x=${j}"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
-				case 'haut' :
-					plateau += `<a href="req_deplacement?direction=haut"><img src="dalle_deplacement.png"></a>`;
+				case 'h' :
+					plateau += `<a href="req_deplacement?direction=haut"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
-				case 'droite' :
-					plateau += `<a href="req_deplacement?direction=droite"><img src="dalle_deplacement.png"></a>`;
+				case 'd' :
+					plateau += `<a href="req_deplacement?direction=droite"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
-				case 'gauche' :
-					plateau += `<a href="req_deplacement?direction=gauche"><img src="dalle_deplacement.png"></a>`;
+				case 'g' :
+					plateau += `<a href="req_deplacement?direction=gauche"><img class="cellule" src="dalle_deplacement.png"></a>`;
 					break;
 				default :
 					break;
@@ -76,7 +78,20 @@ const afficher_laby = function (map, perso) {
 		}
 		plateau += "</div>";
 	}
-	return plateau;
+	//marqueurs
+	marqueurs = {}; 
+    marqueurs.plateau = plateau;
+
+    marqueurs.image_haut = `<img class="monstre" src="carreBleu.png">`
+    marqueurs.image_gauche =  `<img class="monstre" src="carreJaune.png">`
+    marqueurs.image_droite =  `<img class="monstre" src="carreRouge.jpeg">`
+    marqueurs.image_bas =  `<img class="monstre" src="mujika2.png">`
+
+    marqueurs.vie = donnees.vie;
+	marqueurs.energie = donnees.energie;
+	marqueurs.deplacements = donnees.pm;
+
+	return marqueurs;
 };
 
 module.exports = afficher_laby;

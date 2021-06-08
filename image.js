@@ -55,5 +55,3 @@ function mouseup(e) {
 function calcul(target, e) {
     return Math.sqrt((e.clientX - target.x)**2 + (e.clientY - target.y)**2);
 };
-                                                           
-
