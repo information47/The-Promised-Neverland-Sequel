@@ -7,18 +7,26 @@ const req_multiple = function (req, res, query) {
 	let page;
 	let marqueurs;
 	let indice;
-	let questions;
-
+	let question;
 	contenu = fs.readFileSync("questions_multiples.json", "utf-8");
-	questions = JSON.parse(contenu);
+	question = JSON.parse(contenu);
 	
-	indice = Math.floor(Math.random() * questions.length);
+	if(query.no_question !== undefined && question[query.no_question].choices[query.proposition] === question[query.proposition].correct){
+	console.log("correct");
+} else {
+	console.log("pas bon");
+}
+
+	
+		
+	indice = Math.floor(Math.random() * question.length);
 	marqueurs = {};
-	marqueurs.intitule = questions[indice].question;
-	marqueurs.reponse0 = questions[indice].prop0;
-	marqueurs.reponse1 = questions[indice].prop1;
-	marqueurs.reponse2 = questions[indice].prop2;
-	marqueurs.reponse3 = questions[indice].prop3;
+	marqueurs.question = question[indice].question;
+	marqueurs.no_question = indice;
+	marqueurs.reponse0 = question[indice].choices[0];
+	marqueurs.reponse1 = question[indice].choices[1];
+	marqueurs.reponse2 = question[indice].choices[2];
+	marqueurs.reponse3 = question[indice].choices[3];
 	page = fs.readFileSync("modele_multiple.html", "utf-8");
 	page = page.supplant(marqueurs);
 
@@ -27,4 +35,4 @@ const req_multiple = function (req, res, query) {
 	res.end();
 };
 
-module.exports = req_multiple;
+module.exports = req_multiple; 

@@ -2,11 +2,46 @@
     {
         "question": "Lequel de ces principes ne fait pas partie de la « règle des trois » selon laquelle on ne peut survivre ? ",
         "choices": [
-            "choice0",
-            "choice1",
-            "choice2",
-            "choice3"
+            "Trois minutes sans air",
+            "Trois heures sans un abri",
+            "Trois jours sans eau",
+            "Trois semaines sans manger"
         ],
-        "correct": "choice0"
-    }
+        "correct": "Trois minutes sans air"
+    },
+
+	{
+		"question": "Pendant combien de jours maximum peut-on tenir sans boire (par temps frais)?",
+        "choices": [
+            "2 jours",
+            "5 jours",
+            "9 jours",
+            "17 jours"
+        ],
+        "correct": "17 jours"
+
+	},
+
+	{
+        "question": "En cas d’enfouissement par une avalanche, pourquoi peut-il être important d’uriner?",
+        "choices": [
+            "la trace de l’urine dans la neige indique où se trouve le sol et donc où creuser vers la surface",
+            "c’est un repère olfactif pour les chiens de sauvetage",
+            "ça permet de sortir les toxines du corps et de résister plus longtemps au froid",
+            "toutes ces réponses"
+        ],
+        "correct": "toutes ces réponses"
+
+    },
+
+	{
+        "question": "Comment reconnaître un champignon non comestible?",
+        "choices": [
+            "Il pousse sur le tronc des arbres",
+            "Il dégage une forte odeur",
+            "Il contient du jus blanc ou laiteux",
+            "Son chapeau a des points rouges"
+        ],
+        "correct": "Il contient du jus blanc ou laiteux"
+	}
 ]

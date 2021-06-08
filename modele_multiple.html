@@ -5,18 +5,54 @@
    		<link rel="stylesheet" type="text/css" href="modele_multiple.css">
 
    </head>
-    <form action="/req_afficher_fini_jouer" method="GET">
-</form>
+    
+
 	<body>
-		<form action="questions_multiples.json" method="GET">
-    <input type="hidden" name="no_question" value="0" />
-    <h3>Lequel de ces principes ne fait pas partie de la « règle des trois » selon laquelle on ne peut survivre ? </h3>
-    <input type="submit" name="proposition" value="Trois minutes sans air " />
-    <input type="submit" name="proposition" value="Trois heures sans un abri" />
-    <input type="submit" name="proposition" value="Trois jours sans eau " />
-    <input type="submit" name="proposition" value="Trois semaines sans manger" />
-</form>
-		
-    </body>
+		<form action="/req_multiple" method="GET">
+    <div class="main-container">
+		<h1>{question}</h1>
+     </div>
+	  <div class="radio-buttons">
+        <label class="custom-radio">
+          <input type="radio" name="radio" checked />
+          <span class="radio-btn"><i class="las la-check"></i>
+            <div class="hobbies-icon">
+              <i class="las la-biking"></i>
+              <h5>{reponse0}</h5>
+            </div>
+          </span>
+        </label>
+        <label class="custom-radio">
+          <input type="radio" name="radio" />
+          <span class="radio-btn"><i class="las la-check"></i>
+            <div class="hobbies-icon">
+              <i class="las la-futbol"></i>
+              <h5>{reponse1}</h5>
+            </div>
+          </span>
+        </label>
+        <label class="custom-radio">
+          <input type="radio" name="radio" />
+          <span class="radio-btn"><i class="las la-check"></i>
+            <div class="hobbies-icon">
+              <i class="las la-table-tennis"></i>
+              <h5>{reponse2}</h5>
+            </div>
+          </span>
+        </label>
+        <label class="custom-radio">
+          <input type="radio" name="radio" />
+          <span class="radio-btn"><i class="las la-check"></i>
+            <div class="hobbies-icon">
+              <i class="las la-ellipsis-h"></i>
+              <h5>{reponse3}</h5>
+            </div>
+          </span>
+        </label>
+      </div>
+    </div>
+  		<input type="submit" name="valider" value="Valider" />
+  </body>
+ </form>		
 </html>
 
