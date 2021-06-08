@@ -20,16 +20,16 @@ function compteur(req, res, query) {
 		compteur -= 1;
 	}
 //Quand le compteur tombe à 0, le serveur renvoi au début	
-let i;
+	let i;
 
-while(i<listeMembres.length) {
-	if(listeMembres[i].pseudo === query.pseudo) {
-		if (membres[i].compteur === 0) {
-			page = fs.readFileSync('modele_accueil_membre', 'utf-8');
+	while(i<listeMembres.length) {
+		if(listeMembres[i].pseudo === query.pseudo) {
+			if (membres[i].compteur === 0) {
+				page = fs.readFileSync('modele_accueil_membre.html', 'utf-8');
+			}	
 		}
+		i++;
 	}
-	i++;
-}
 	marqueurs = {};
 	marqueurs.compteur = compteur.compteur;
 };

@@ -1,0 +1,41 @@
+body {
+	background-color: #2a2a2e;
+	display: flex;
+	flex-direction: row;
+}
+p {
+	color: white;
+}
+.cellule {
+	width: 35px;
+	height: 35px;
+}
+.monstre {
+	width: 43px;
+	height: 43px;
+}
+#deplacement_rapide {
+	margin-left: 70px;
+}
+#labyrinthe {
+	line-height: 1px;
+}
+#ensemble_laby {
+	display: flex;
+	flex-direction: column;
+}
+#ligne_laby {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+#ligne_haut, #ligne_bas {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.monstre {
+	border-radius: 5px;
+	margin: 10px;
+}
