@@ -1,0 +1,44 @@
+body{
+	position: relative;
+	background-image: url("image.png");
+	background-size: 670px;
+	background-repeat: no-repeat;
+	background-position: center top 150px;
+	background-color: #1C2833;
+}
+
+
+.phil {
+	position: absolute;
+    width: 150px;
+	height: 150px;
+	left: 1600px;
+	top: 400px;
+}
+
+.chrono {
+	text-align: right;
+	color: #FFFFFF;
+}
+.text{
+	text-align: center;
+	color: white;
+}
+
+
+#hexa {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	left: 10px;
+}
+#centre {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	right: 2015px;
+	top: 350px;
+}
+.text2 {
+	color: white;
+}

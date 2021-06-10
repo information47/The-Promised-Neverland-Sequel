@@ -1,7 +1,7 @@
 let image = false;
 let target = {
-            x: 100,
-            y: 470,
+            x: 750,
+            y: 700,
             }
 let seconde = 20;
 
