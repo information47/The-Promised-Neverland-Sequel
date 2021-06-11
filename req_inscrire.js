@@ -23,6 +23,7 @@ const trait = function (req, res, query) {
 	let listeMembres;
 	let i;
 	let trouve;
+	let valide;
 
 	// ON LIT LES COMPTES EXISTANTS
 
@@ -41,8 +42,8 @@ const trait = function (req, res, query) {
 	}
 
 	// SI PAS TROUVE, ON AJOUTE LE NOUVEAU COMPTE DANS LA LISTE DES COMPTES
-
-	if (trouve === false) {
+	valide = trouve === false && query.password === query.repassword && 
+	if (valide) {
 		nouveauMembre = {};
 		nouveauMembre.pseudo = query.pseudo;
 		nouveauMembre.password = query.password;
@@ -57,7 +58,7 @@ const trait = function (req, res, query) {
 
 	// ON RENVOIT UNE PAGE HTML 
 
-	if (trouve === true) {
+	if (valide === false) {
 		// SI CREATION PAS OK, ON REAFFICHE PAGE FORMULAIRE AVEC ERREUR
 
 		page = fs.readFileSync('modele_formulaire_inscription.html', 'utf-8');
