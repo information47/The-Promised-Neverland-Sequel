@@ -30,6 +30,8 @@ const req_afficher_choix_niveau = require("./req_afficher_choix_niveau.js");
 const req_multiple = require("./req_multiple.js");
 const req_laby = require("./req_laby.js");
 const req_deplacement = require("./req_deplacement.js");
+const req_action = require("./req_action.js");
+const req_passer_tour = require("./req_passer_tour");
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
 //-------------------------------------------------------------------------
@@ -89,7 +91,13 @@ const traite_requete = function (req, res) {
 			case '/req_deplacement':
 				req_deplacement(req, res, query);
 				break;
-			default:
+			case '/req_action' :
+				req_action(req, res, query);
+				break;
+			case "/req_passer_tour" :
+				req_passer_tour(req, res, query);
+				break;
+				default:
 				req_statique(req, res, query);
 				break;
 		}

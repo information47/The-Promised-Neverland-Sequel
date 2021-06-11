@@ -3,7 +3,7 @@ const check = function(test, liste) {
 	let verif = liste.find(pos => pos.y === test.y && pos.x === test.x);
 	return verif;
 }
-const dalle_dep = function(map, position, pm) {
+const dalle_dep = function(map, position, pm, grille) {
 	let liste_visite = [];
 
 	//push de la case de depart
@@ -20,6 +20,7 @@ const dalle_dep = function(map, position, pm) {
 							|| (j === liste_visite[i].y && k === liste_visite[i].x +1) 
 							|| (j === liste_visite[i].y && k === liste_visite[i].x -1) 
 						) && check({y: j, x: k}, liste_visite) === undefined
+						&& grille[j][k].code !== 4
 				) {
 					liste_visite.push({y: j, x: k, pm: liste_visite[i].pm -1});
 				}   

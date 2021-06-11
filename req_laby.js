@@ -3,6 +3,7 @@
 require('remedial')
 const fs = require("fs");
 const afficher_laby = require("./fct_afficher_laby");
+const ragekit = require("./fct_ragekit");
 
 const req_laby = function(req, res, query) {
 	let contenu;
@@ -12,6 +13,10 @@ const req_laby = function(req, res, query) {
 
 	contenu = fs.readFileSync("labyrinthe.json", "utf-8");
 	donnees = JSON.parse(contenu);
+	donnees = ragekit(donnees);
+
+	contenu = JSON.stringify(donnees);
+	fs.writeFileSync("labyrinthe.json", contenu, "utf-8");
 
 	marqueurs = afficher_laby();
 	

@@ -42,7 +42,7 @@ const trait = function (req, res, query) {
 	}
 
 	// SI PAS TROUVE, ON AJOUTE LE NOUVEAU COMPTE DANS LA LISTE DES COMPTES
-	valide = trouve === false && query.password === query.repassword && 
+	valide = trouve === false && query.password === query.repassword 
 	if (valide) {
 		nouveauMembre = {};
 		nouveauMembre.pseudo = query.pseudo;
