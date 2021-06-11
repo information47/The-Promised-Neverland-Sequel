@@ -2,20 +2,24 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="inscription.css">
 	</head>
 	<body>
-		<h2>Formulaire de création de compte</h2>
 
 		{erreur}
-
-		<form action="/req_inscrire" method="GET">
-			<label>Pseudo :</label>
-			<input type="text" name="pseudo" value="{pseudo}"required/>
-		<br/>
-			<label>Mot de passe :</label>
-			<input type="password" name="password" minlength="6" required/>
-			<br/>
-			<button name="action" value="creer">Créer compte</button>
-		</form>
+		<div class="box">
+		<h1>Création de compte</h1>
+			<form action="/req_inscrire" method="GET">
+				
+				<input  type="text" name="pseudo" value="{pseudo}" placeholder="pseudo"required/>
+				<input type="password" name="password" minlength="6" placeholder="mot de passe"required/>
+				<input type="password" name="repassword" placeholder="confirmer mot de passe" required/>
+					<script> 
+						if(repassword!== password){
+							alert("Mot de passes non identification");
+						</script>
+				<button class="bouton"name="action" value="creer">Créer compte</button>
+			</form>
+		</div>
 	</body>
 </html>
