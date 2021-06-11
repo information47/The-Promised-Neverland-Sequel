@@ -3,20 +3,22 @@ const fs = require("fs");
 const prevision = function (prevision) {
     let contenu;
     let donnees;
-    let entite;
-
-    console.log (prevision);
-    entite = ["mujika","bleu", "rouge", "jaune"]
+    let mujika = {};
+    let bleu = {};
+    let rouge = {};
+    let jaune = {};
+    let nb_aleatoire;
+    let liste_liens = [`<img class="previ" src="carre_bleu.png">`, `<img class="previ" src="carre_rouge.png">`, `<img class="previ" src="carre_jaune.png">`];
 
     if (prevision.length === 0){
         for(let i=0; i<8; i++){
-            prevision.push(Math.floor(Math.random()*3));
-            console.log(prevision, "if");
+            nb_aleatoire = Math.floor(Math.random()*3)
+            prevision.push({"nb": nb_aleatoire, "lien": liste_liens[nb_aleatoire]});
         }
     } else {
         prevision.splice(0, 1);
-        prevision.push(Math.floor(Math.random()*3));
-        console.log(prevision, "else")
+        nb_aleatoire = Math.floor(Math.random()*3)
+        prevision.push({"nb": nb_aleatoire, "lien": liste_liens[nb_aleatoire]});
     }
     return prevision;
 }
