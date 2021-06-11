@@ -87,8 +87,6 @@ const traite_requete = function (req, res) {
 			case '/req_laby':
 				req_laby(req, res, query);
 				break;
-			case '/req_afficher_image':
-				req_afficher_image(req, res, query);
 			case '/req_deplacement':
 				req_deplacement(req, res, query);
 				break;

@@ -11,7 +11,7 @@ img {
 	opacity: 5%;
 }
 .erreur{
-	color: #690500;
+	color: red;
 }
 .box{
 	border: 3px solid #690500; 
@@ -54,7 +54,7 @@ img {
 	width: 250px;
 	border-color: #690500
 }
-.box .bouton{
+.bouton{
 	border: 0;
     background: none;
     display: block;
@@ -65,11 +65,15 @@ img {
 	width: 200px;
     outline: none;
     color: white;
-    border-radius: 24px;
-    transition: 0.25s;
+    border-radius:24px;
+	transition: 0.25s;
 	text-decoration: none;
 	cursor: pointer;
 	box-sizing: border-box;
 	font-size: 1rem;
 	font-family: sans-serif;
+}
+.box .bouton:hover{
+	width: 200px;
+	border-color: #690500;
 }
