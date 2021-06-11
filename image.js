@@ -1,12 +1,12 @@
 let image = false;
 let target = {
-            x: 100,
-            y: 470,
+            x: 750,
+            y: 700,
             }
 let seconde = 20;
 
 
-const img = document.querySelector('img');
+const phil = document.querySelector('.phil');
 const chrono = document.querySelector('.chrono');
 
 window.addEventListener('load', countdown);
@@ -35,8 +35,8 @@ window.addEventListener('mousemove', mousemove);
 function mousemove(e){
     e.preventDefault();
     if(image === true) {
-        img.style.top = e.clientY + "px";
-        img.style.left = e.clientX + "px";
+        phil.style.top = e.clientY + "px";
+        phil.style.left = e.clientX + "px";
     }
 };
 
