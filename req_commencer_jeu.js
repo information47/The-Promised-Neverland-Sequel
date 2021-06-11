@@ -4,17 +4,38 @@ const fs = require("fs");
 require('remedial');
 
 const trait = function (req, res, query) {
-
+	let listeMembres;
+	let Membre;
+	let contenu_fichier;
     let marqueurs;
     let page;
-	//compteurs (standars)
-	let compteurs = 3;
-	//on inscrit le compteur aux joueur
-	contenu_fichier = fs.readFileSync("memebres.json", 'utf-8');
-	listeMembres =  JSON.parse(contenu_fichier);
-	
-	//on ajoute le compteur dans la liste des comptes
+	let difficulte;
+	let epreuve;
+	let nb_epreuve;
 	let i;
+	//compteurs (standars)
+	let nb_erreur = 2;
+	//on inscrit le compteur aux joueur
+	contenu_fichier = fs.readFileSync("membres.json", 'utf-8');
+	listeMembres =  JSON.parse(contenu_fichier);
+
+
+	i = 0;
+	while(i<listeMembres.length) {
+		if (listeMembres[i].pseudo === query.pseudo) {
+				listeMembres[i].difficulte = query.difficulte; 
+		}
+		i++;
+	}
+	
+	//On règle la difficulté selon le niveau choisit
+	if(query.difficulte === 0){
+			nb_erreur = 2;
+	} else if (query.difficulte === 1){
+			nb_erreur = 0;
+	}
+
+	//on ajoute le compteur dans la liste des comptes
 	
 	i = 0;
 	while(i<listeMembres.length) {
@@ -30,12 +51,18 @@ const trait = function (req, res, query) {
 	fs.writeFileSync("membres.json", contenu_fichier, 'utf-8');
 	
 	//une fois compteur pris en compte
-    page = fs.readFileSync('modele_parcours.html', 'utf-8');
 
     marqueurs = {}; 
     marqueurs.erreur = ""; 
     marqueurs.pseudo = ""; 
-    page = page.supplant(marqueurs);
+	marqueurs.question = question[indice].question;
+    marqueurs.no_question = indice;
+    marqueurs.reponse0 = question[indice].choices[0];
+    marqueurs.reponse1 = question[indice].choices[1];
+    marqueurs.reponse2 = question[indice].choices[2];
+    marqueurs.reponse3 = question[indice].choices[3];
+    page = fs.readFileSync("modele_multiple.html", "utf-8");
+	page = page.supplant(marqueurs);
 
     res.writeHead(200, { 'Content-Type': 'text/html' }); 
     res.write(page);
