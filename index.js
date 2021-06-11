@@ -75,7 +75,8 @@ const traite_requete = function (req, res) {
 				break;
 			case '/req_afficher_jeu':
 				req_afficher_jeu(req, res, query);
-			case '/req_commenecer_jeu':
+				break;
+			case '/req_commencer_jeu':
 				req_commencer_jeu(req, res, query);
 				break;
 			case '/req_afficher_choix_niveau':

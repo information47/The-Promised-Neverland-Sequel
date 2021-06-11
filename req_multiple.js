@@ -8,16 +8,16 @@ const req_multiple = function (req, res, query) {
 	let marqueurs;
 	let indice;
 	let question;
-	contenu = fs.readFileSync("questions_multiples.json", "utf-8");
+	contenu = fs.readFileSync("question_multiple.json", "utf-8");
 	question = JSON.parse(contenu);
 	
-	if(query.no_question !== undefined && question[query.no_question].choices[query.proposition] === question[query.proposition].correct){
+	if(query.no_question !== undefined && question[query.no_question].choices[query.proposition] === question[query.no_question].correct){
 	console.log("correct");
 } else {
 	console.log("pas bon");
 }
 
-	
+		
 		
 	indice = Math.floor(Math.random() * question.length);
 	marqueurs = {};
