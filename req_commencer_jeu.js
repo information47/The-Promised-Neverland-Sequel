@@ -5,14 +5,19 @@ require('remedial');
 
 const trait = function (req, res, query) {
 	let listeMembres;
+	let question;
+	let indice;
 	let Membre;
 	let contenu_fichier;
-    let marqueurs;
+    let contenu;
+	let marqueurs;
     let page;
 	let difficulte;
 	let epreuve;
 	let nb_epreuve;
 	let i;
+	contenu = fs.readFileSync("question_multiple.json", "utf-8");
+	question = JSON.parse(contenu);
 	//compteurs (standars)
 	let nb_erreur = 2;
 	//on inscrit le compteur aux joueur
@@ -51,7 +56,8 @@ const trait = function (req, res, query) {
 	fs.writeFileSync("membres.json", contenu_fichier, 'utf-8');
 	
 	//une fois compteur pris en compte
-
+	
+	indice = Math.floor(Math.random() * question.length);
     marqueurs = {}; 
     marqueurs.erreur = ""; 
     marqueurs.pseudo = ""; 
