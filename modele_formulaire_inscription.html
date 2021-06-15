@@ -3,10 +3,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" href="inscription.css">
+		<title>Inscription</title>
 	</head>
 	<body>
 
-		{erreur}
+		
 		<div class="box">
 		<h1>Création de compte</h1>
 			<form action="/req_inscrire" method="GET">
@@ -16,6 +17,7 @@
 				<input type="password" name="repassword" placeholder="confirmer mot de passe" required/>
 				<button class="bouton"name="action" value="creer">Créer compte</button>
 			</form>
+			{erreur}
 		</div>
 	</body>
 </html>
