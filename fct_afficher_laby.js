@@ -104,10 +104,13 @@ const afficher_laby = function () {
 				break;
 		}
 	}
-    marqueurs.vie = donnees.vie;
+    
+	// donnees du personnage
+	marqueurs.vie = donnees.vie;
 	marqueurs.pa = donnees.pa;
 	marqueurs.deplacements = donnees.pm;
-
+	
+	//prevision
 	marqueurs.previ0 = donnees.prevision[0].lien;
 	marqueurs.previ1 = donnees.prevision[1].lien;
 	marqueurs.previ2 = donnees.prevision[2].lien;
@@ -116,6 +119,30 @@ const afficher_laby = function () {
 	marqueurs.previ5 = donnees.prevision[5].lien;
 	marqueurs.previ6 = donnees.prevision[6].lien;
 	marqueurs.previ7 = donnees.prevision[7].lien;
+
+	//actions
+	if (donnees.intervalle[0] > 0 || donnees.pa < 1) {
+		marqueurs.deplacement_rapide = "<img src='deplacement_rapide.png' id='deplacement_rapide'>";
+	} else {
+		marqueurs.deplacement_rapide = "<a id='a_intervalle' href='req_action?action=deplacement_rapide'><img id='deplacement_rapide'src='deplacement_rapide.png'></a>";
+	}
+	if (donnees.intervalle[1] > 0 || donnees.pa <1) {
+		marqueurs.decalage = "<img src='decalage.png'>";
+	} else {
+		marqueurs.decalage = "<a id='a_intervalle' href='req_action?action=decalage'><img src='decalage.png'></a>";
+	}
+
+	//intervalles
+	if (donnees.intervalle[0] !== 0) {
+		marqueurs.intervalle_dep_rap = "<p class='intervalle'>" + donnees.intervalle[0] + "</p>";
+	} else {
+		marqueurs.intervalle_dep_rap = "<p>" + "" + "</p>";
+	}
+	if (donnees.intervalle[1] !== 0) {
+		marqueurs.intervalle_dec = "<p class='intervalle'>" + donnees.intervalle[1] + "</p>";
+	} else {
+		marqueurs.intervalle_dec = "<p>" + "" + "</p>";
+	}
 
 	return marqueurs;
 };

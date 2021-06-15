@@ -1,10 +1,9 @@
 'use strict'
 const fs = require('fs');
 
-const deplacement_rapide = function(pa, pm) {
+const deplacement_rapide = function(pm) {
     pm ++;
-    pa --;
-    return {pa, pm};
+    return pm;
 }
 
 module.exports = deplacement_rapide;

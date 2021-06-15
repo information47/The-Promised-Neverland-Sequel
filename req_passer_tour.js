@@ -21,6 +21,11 @@ const req_passer_tour = function(req, res, query){
     donnees.pm = 1;
     donnees.tour ++;
     donnees.vie--;
+    for (let i=0; i<donnees.intervalle.length; i++){
+        if (donnees.intervalle[i] !== 0) {
+        donnees.intervalle[i] --;
+        }
+    }
         // permutation des entites
     switch(donnees.prevision[0].nb) {
         case 0:
@@ -50,7 +55,7 @@ const req_passer_tour = function(req, res, query){
 
     switch (donnees.entite["mujika"]) {
         case "haut":
-            if (map[donnees.perso.y +1][donnees.perso.x] === 1) {
+            if (donnees.perso.y < 18 && map[donnees.perso.y +1][donnees.perso.x] === 1) {
                 donnees.murs.push({"y": donnees.perso.y +1, "x": donnees.perso.x});
             }
             break;
@@ -60,7 +65,7 @@ const req_passer_tour = function(req, res, query){
             }
             break;
         case "bas":
-            if (map[donnees.perso.y -1][donnees.perso.x] === 1) {
+            if (donnees.perso.y > 0 && map[donnees.perso.y -1][donnees.perso.x] === 1) {
             donnees.murs.push({"y": donnees.perso.y -1, "x": donnees.perso.x});
             }
             break;

@@ -6,6 +6,7 @@ const deplacement_rapide =require("./fct_deplacement_rapide");
 const afficher_laby = require("./fct_afficher_laby");
 const ragekit = require("./fct_ragekit.js");
 const decalage = require("./fct_decalage.js");
+const placidite = require("./fct_placidite.js");
 
 const req_action = function (req, res, query) {
 	let marqueurs;
@@ -18,16 +19,20 @@ const req_action = function (req, res, query) {
 
 	switch(query.action) {
 		case "deplacement_rapide" :
-			contenu = deplacement_rapide(donnees.pa, donnees.pm);
-			donnees.pa = contenu.pa;
-			donnees.pm = contenu.pm;
+			contenu = deplacement_rapide(donnees.pm);
+			donnees.pm = contenu;
+			donnees.intervalle[0] = 10;
+			donnees.pa --;
 			break;
 		case "decalage" :
 			console.log("switch");
 			donnees.murs = decalage(donnees.murs, donnees.perso);
+			donnees.intervalle[1] = 10;
+			donnees.pa --;
 			break;
-		case "placidité" :
-
+		case "placidite" :
+			donnees.intervalle = placidite(donnees.intervalle);
+			donnees.pa --;
 			break;
 		case "ragekit" :
 			donnees = ragekit(donnees);
@@ -35,7 +40,7 @@ const req_action = function (req, res, query) {
 		default:
 			break;
 	}
-	
+
 	contenu = JSON.stringify(donnees);
 	fs.writeFileSync("labyrinthe.json", contenu, "utf-8");
 

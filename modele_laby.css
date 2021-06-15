@@ -13,9 +13,8 @@ p {
 .monstre {
 	width: 43px;
 	height: 43px;
-}
-#deplacement_rapide {
-	margin-left: 70px;
+	border-radius: 5px;
+	margin: 10px;
 }
 #labyrinthe {
 	line-height: 1px;
@@ -35,10 +34,6 @@ p {
 	flex-direction: row;
 	justify-content: center;
 }
-.monstre {
-	border-radius: 5px;
-	margin: 10px;
-}
 .icons {
 	width: 20px;
 	height: 20px;
@@ -48,4 +43,22 @@ p {
 	height: 30px;
 	border-radius: 3px;
 	margin: 3px;
-} 
+}
+#dep_rap, #dec {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+#a_intervalle {
+	width: 44px;
+}
+#passer_tour {
+	height: 18px;
+}
+#actions {
+	display: flex;
+	flex-direction: row;
+}
+.intervalle {
+	color: red;
+}

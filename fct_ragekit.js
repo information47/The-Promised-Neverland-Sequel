@@ -11,6 +11,10 @@ const ragekit = function(donnees) {
     donnees.tour = 1;
     donnees.vie = 50;
     donnees.murs = [];
+    
+    for (let i=0; i<donnees.intervalle.length; i++){
+        donnees.intervalle[i] = 0;
+    }
 
     donnees.prevision = prevision(donnees.prevision);
 

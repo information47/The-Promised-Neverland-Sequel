@@ -21,13 +21,19 @@
 				{image_bas}
 			</div>
 		</div>	
-			<div id='sorts'>
-				<a href="req_action?action=deplacement_rapide"><img id="deplacement_rapide"src="deplacement_rapide.png"></a>
-				<a href="req_action?action=decalage"><img src="decalage.png"></a>
+			<div id='actions'>
+				<div id='dep_rap'>
+					{deplacement_rapide}
+					{intervalle_dep_rap}
+				</div>
+				<div id="dec">
+					{decalage}
+					{intervalle_dec}
+				</div>
 				<a href="req_action?action=placidite"><img src="placidite.png"></a>
 				<a href="req_action?action=ragekit"><img src="ragekit.png"></a>
 			</div>
-			<a href="req_passer_tour">Terminer le tour</a>
+			<a href="req_passer_tour" id="passer_tour">Terminer le tour</a>
 			<div>
 				<p><img src="coeur.png" class="icons"> {vie}</p>
 				<p><img src="etoile.png" class="icons"> {pa}</p>
