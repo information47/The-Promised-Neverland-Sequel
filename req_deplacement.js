@@ -4,7 +4,7 @@ require('remedial')
 const fs = require("fs");
 const afficher_laby =  require("./fct_afficher_laby");
 const dalle_dep = require("./fct_dalle_deplacement");
-
+const trait = require("./req_afficher_fini_jouer");
 const check = function(test, liste) {
 	let verif = liste.find(pos => pos.y === test.y && pos.x === test.x);
 	return verif;
@@ -30,13 +30,21 @@ const req_deplacement = function (req, res, query) {
 	donnees.perso.x = Number(query.x);
 	donnees.pm = Number(query.pm);	
 
+	if (donnees.perso.y === 0 && donnees.perso.x === 0) {
+		trait(req, res, query);
+	}
+
 	//stringify + appel fonction afficher_laby
 	contenu = JSON.stringify(donnees);
 	fs.writeFileSync("labyrinthe.json",contenu, "utf-8");
 	
 	marqueurs  = afficher_laby();
 
-	page = fs.readFileSync("modele_laby.html", "utf-8");
+	if (donnees.perso.y === 0 && donnees.perso.x === 0) {
+		page = fs.readFileSync('modele_fini_jouer.html', 'utf-8');
+	} else {
+		page = fs.readFileSync("modele_laby.html", "utf-8");
+	}
     page = page.supplant(marqueurs);
 
     res.writeHead(200, { "content-type": "text/html" });

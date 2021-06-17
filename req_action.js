@@ -33,6 +33,7 @@ const req_action = function (req, res, query) {
 		case "placidite" :
 			donnees.intervalle = placidite(donnees.intervalle);
 			donnees.pa --;
+			donnees.vie--;
 			break;
 		case "ragekit" :
 			donnees = ragekit(donnees);

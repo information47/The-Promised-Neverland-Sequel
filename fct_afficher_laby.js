@@ -121,15 +121,24 @@ const afficher_laby = function () {
 	marqueurs.previ7 = donnees.prevision[7].lien;
 
 	//actions
-	if (donnees.intervalle[0] > 0 || donnees.pa < 1) {
+	if (donnees.pa < 1) {
 		marqueurs.deplacement_rapide = "<img src='deplacement_rapide.png' id='deplacement_rapide'>";
-	} else {
-		marqueurs.deplacement_rapide = "<a id='a_intervalle' href='req_action?action=deplacement_rapide'><img id='deplacement_rapide'src='deplacement_rapide.png'></a>";
-	}
-	if (donnees.intervalle[1] > 0 || donnees.pa <1) {
 		marqueurs.decalage = "<img src='decalage.png'>";
+		marqueurs.placidite = "<img class='action' src='placidite.png'>";
+		marqueurs.ragekit = "<img class='action' src='ragekit.png'>";
 	} else {
-		marqueurs.decalage = "<a id='a_intervalle' href='req_action?action=decalage'><img src='decalage.png'></a>";
+		if (donnees.intervalle[0] > 0) {
+			marqueurs.deplacement_rapide = "<img src='deplacement_rapide.png' id='deplacement_rapide'>";
+		} else {
+			marqueurs.deplacement_rapide = "<a id='a_intervalle' href='req_action?action=deplacement_rapide'><img id='deplacement_rapide'src='deplacement_rapide.png'></a>";
+		}
+		if (donnees.intervalle[1] > 0) {
+			marqueurs.decalage = "<img src='decalage.png'>";
+		} else {
+			marqueurs.decalage = "<a id='a_intervalle' href='req_action?action=decalage'><img src='decalage.png'></a>";
+		}
+		marqueurs.placidite = "<a id='a_placidite' href='req_action?action=placidite'><img src='placidite.png'></a>";
+		marqueurs.ragekit = "<a id='a_ragekit' href='req_action?action=ragekit'><img src='ragekit.png'></a>";
 	}
 
 	//intervalles
