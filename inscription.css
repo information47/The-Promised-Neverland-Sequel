@@ -9,9 +9,11 @@ body{
 img {
 	width: 100%;
 	opacity: 5%;
+
 }
 .erreur{
 	color: red;
+
 }
 .box{
 	border: 3px solid #690500; 
@@ -25,10 +27,10 @@ img {
 	background: #191919;
 	opacity: 0.9;
 	text-align: center;
-
 	
+
 }
-.box h1{
+h1{
 	color: white;
 	text-transform: uppercase;
 	font-weight: 250;
