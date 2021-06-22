@@ -47,7 +47,6 @@ const trait = function (req, res, query) {
 	}	
 
 	contenu_fichier = JSON.stringify(listeMembres);
-
 	fs.writeFileSync("membres.json", contenu_fichier, 'utf-8');
 	
 	//une fois compteur pris en compte

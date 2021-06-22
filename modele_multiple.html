@@ -11,11 +11,13 @@
 		
 		<form action="/req_multiple" method="GET">
     <div class="main-container">
+		<input type="hidden" name="no_question" value="{no_question}">
+		<h1>{question}</h1>
 		{question}
      </div>
 	  <div class="radio-buttons">
         <label class="custom-radio">
-          <input type="radio" name="radio" checked />
+          <input type="radio" name="proposition" checked />
           <span class="radio-btn"><i class="las la-check"></i>
             <div class="hobbies-icon">
               <i class="las la-biking"></i>
@@ -24,7 +26,7 @@
           </span>
         </label>
         <label class="custom-radio">
-          <input type="radio" name="radio" />
+          <input type="radio" name="proposition" />
           <span class="radio-btn"><i class="las la-check"></i>
             <div class="hobbies-icon">
               <i class="las la-futbol"></i>
@@ -32,8 +34,9 @@
             </div>
           </span>
         </label>
-        <label class="custom-radio">
-          <input type="radio" name="radio" />
+        </br>
+		<label class="custom-radio">
+          <input type="radio" name="proposition" />
           <span class="radio-btn"><i class="las la-check"></i>
             <div class="hobbies-icon">
               <i class="las la-table-tennis"></i>
@@ -42,7 +45,7 @@
           </span>
         </label>
         <label class="custom-radio">
-          <input type="radio" name="radio" />
+          <input type="radio" name="proposition" />
           <span class="radio-btn"><i class="las la-check"></i>
             <div class="hobbies-icon">
               <i class="las la-ellipsis-h"></i>
@@ -52,9 +55,9 @@
         </label>
       </div>
     </div>
-  		<center>
-		<input type="submit" name="valider" value="Valider" />
-  		</center>
+			<center>
+			<input type="submit" name="valider" value="Valider" />
+  			</center>
   </body>
  </form>		
 </html>
