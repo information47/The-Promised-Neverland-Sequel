@@ -16,7 +16,7 @@ const req_multiple = function (req, res, query) {
 } else {
 	console.log("pas bon");
 }
-
+	
 		
 		
 	indice = Math.floor(Math.random() * question.length);
