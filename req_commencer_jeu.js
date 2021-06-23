@@ -33,9 +33,7 @@ const trait = function (req, res, query) {
 	while(i<listeMembres.length) {
 		if (listeMembres[i].pseudo === query.pseudo) {
 				listeMembres[i].difficulte = query.difficulte;
-				//ajout de l'epreuve
-				listeMembres[i].epreuve = multiple;
-
+				listeMembres[i].epreuve = query.epreuve;
 					//ajout du nb d'erreur
 					if(query.difficulte === 0){
 						listeMembres[i].nb_erreur = 2;
