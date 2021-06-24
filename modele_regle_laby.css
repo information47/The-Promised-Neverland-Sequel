@@ -30,6 +30,11 @@ h2 {
     margin: 10px;
 }
 #capture_laby {
-    width: 650px;
+    width: 680px;
     height: 372px;
+    margin: 10px;
+
+}
+#prevision {
+    height: 12px;
 }
