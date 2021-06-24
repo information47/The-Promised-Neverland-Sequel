@@ -19,6 +19,8 @@ const trait = function (req, res, query) {
 	let nb_erreur;
 	let multiple;
 
+	contenu = fs.readFileSync("modele_explication_multiple.html");
+
 	contenu = fs.readFileSync("question_multiple.json", "utf-8");
 	question = JSON.parse(contenu);
 

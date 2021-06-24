@@ -8,7 +8,8 @@ const req_multiple = function (req, res, query) {
 	let marqueurs;
 	let indice;
 	let question;
-
+	let choices;
+	
 	contenu = fs.readFileSync("question_multiple.json", "utf-8");
 	question = JSON.parse(contenu);
 
@@ -17,9 +18,8 @@ const req_multiple = function (req, res, query) {
 	} else {
 		console.log("pas bon");
 	}
-
-	indice = Math.floor(Math.random() * question.length);
-
+	
+	indice = Math.floor(Math.random() * question.length);	
 	marqueurs = {};
 	marqueurs.question = question[indice].question;
 	marqueurs.no_question = indice;
