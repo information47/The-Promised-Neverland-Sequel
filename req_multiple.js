@@ -16,9 +16,13 @@ const req_multiple = function (req, res, query) {
 	let marqueurs;
 	let indice;
 	let question;
+<<<<<<< HEAD
 
 	contenu_fichier = fs.readFileSync("membres.json", "utf-8");
     listeMembres = JSON.parse(contenu_fichier);
+=======
+	let choices;
+>>>>>>> 40fa74fe82558acc53ff1927dc05cfd3492880cb
 	
 	contenu = fs.readFileSync("question_multiple.json", "utf-8");
 	question = JSON.parse(contenu);
@@ -49,9 +53,8 @@ const req_multiple = function (req, res, query) {
 	} else {
 		console.log("pas bon");
 	}
-
-	indice = Math.floor(Math.random() * question.length);
-
+	
+	indice = Math.floor(Math.random() * question.length);	
 	marqueurs = {};
 	marqueurs.pseudo = "";
 	marqueurs.question = question[indice].question;
