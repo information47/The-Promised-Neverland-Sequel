@@ -15,12 +15,11 @@ function countdown(req, res, query){
 	setInterval(function(){
         chrono.innerHTML = seconde;
         seconde -= 1;
-	
-	/*if (seconde <= 0){ 
+
+/*	if (seconde <= 0){ 
         clearInterval(seconde=0);
         window.location = "modele_perdu.html";
-    } */  
-
+    }*/ 
 
     }, 1000)
 };
@@ -44,7 +43,7 @@ window.addEventListener('mouseup', mouseup);
 
 function mouseup(e) {
     let distance;
-    let seuil = 70;
+    let seuil = 100;
 	distance = calcul(target, e);
 	image = false;
     if(distance <= seuil) {
