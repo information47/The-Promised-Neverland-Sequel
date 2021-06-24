@@ -9,7 +9,7 @@
 
 	<body>
 		
-		<form action="/req_multiple?" method="GET">
+		<form action="/req_multiple" method="GET">
     <div class="main-container">
 		<input type="hidden" name="pseudo" value="{pseudo}">
 		<input type="hidden" name="nb_epreuve" value="0">
@@ -20,6 +20,10 @@
 	  <div class="radio-buttons">
         <label class="custom-radio">
           <input type="radio" name="proposition" checked />
+     </div>
+	  <div class="radio-buttons">
+        <label class="custom-radio">
+          <input type="radio" name="proposition" value="0"/>
           <span class="radio-btn"><i class="las la-check"></i>
             <div class="hobbies-icon">
               <i class="las la-biking"></i>
@@ -29,6 +33,7 @@
         </label>
         <label class="custom-radio">
           <input type="radio" name="proposition" />
+          <input type="radio" name="proposition" value="1"/>
           <span class="radio-btn"><i class="las la-check"></i>
             <div class="hobbies-icon">
               <i class="las la-futbol"></i>
@@ -39,6 +44,7 @@
         </br>
 		<label class="custom-radio">
           <input type="radio" name="proposition" />
+          <input type="radio" name="proposition" value="2"/>
           <span class="radio-btn"><i class="las la-check"></i>
             <div class="hobbies-icon">
               <i class="las la-table-tennis"></i>
@@ -48,6 +54,7 @@
         </label>
         <label class="custom-radio">
           <input type="radio" name="proposition" />
+          <input type="radio" name="proposition" value="3"/>
           <span class="radio-btn"><i class="las la-check"></i>
             <div class="hobbies-icon">
               <i class="las la-ellipsis-h"></i>
