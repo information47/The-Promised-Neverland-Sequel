@@ -41,14 +41,17 @@ const req_action = function (req, res, query) {
 		default:
 			break;
 	}
+	if (donnees.vie < 1) {
+        page = fs.readFileSync("modele_laby_perdu.html", "utf-8");
+    } else {
+		contenu = JSON.stringify(donnees);
+		fs.writeFileSync("labyrinthe.json", contenu, "utf-8");
 
-	contenu = JSON.stringify(donnees);
-	fs.writeFileSync("labyrinthe.json", contenu, "utf-8");
+		marqueurs  = afficher_laby();
 
-	marqueurs  = afficher_laby();
-
-	page = fs.readFileSync("modele_laby.html", "utf-8");
-    page = page.supplant(marqueurs);
+		page = fs.readFileSync("modele_laby.html", "utf-8");
+		page = page.supplant(marqueurs);
+	}
 
     res.writeHead(200, { "content-type": "text/html" });
     res.write(page);

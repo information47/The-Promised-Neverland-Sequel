@@ -1,0 +1,35 @@
+body {
+	background-color: #2a2a2e;
+    display: flex;
+    flex-direction: row;
+}
+.icons {
+    width: 20px;
+    height: 20px;
+}
+p {
+    color: silver;
+}
+h1 {
+    color: silver;
+}
+h2 {
+    color: silver;
+}
+.description_action {
+    display: flex;
+    flex-direction: row;
+}
+#mujika {
+    width: 40px;
+    height: 40px;
+}
+.action {
+    width: 43px;
+    height: 43px;
+    margin: 10px;
+}
+#capture_laby {
+    width: 650px;
+    height: 372px;
+}

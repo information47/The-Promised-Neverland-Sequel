@@ -65,3 +65,10 @@ p {
 .action {
 	height: 44px;
 }
+button {
+	margin: 15px;
+}
+button:hover {
+	cursor: pointer;
+	background-color: springgreen;
+}

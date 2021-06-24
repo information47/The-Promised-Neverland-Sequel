@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Règles du labyrinthe</title>
+    <link rel="stylesheet" href="modele_regle_laby.css" type="text/css">
+</head>
+<body>
+    <div>
+        <h1>Règles du labyrinthe:</h1>
+        <p>Le but est d'arriver sur la case d'arrivée en vie.</p>
+        <p>
+            Chaque tour, mujika (<img id="mujika" src="carre_mujika.png">) échange de place avec une des trois couleurs<br>
+            et pose un mur a votre contact, à l'opposé de sa position
+        </p>
+        <h2>Pour chaque tour, le joueur dispose de:</h2>
+        <ul>
+            <p> - 50 points de vie <img class="icons" src="coeur.png"> et en perd 1 par tour.<p>        
+            <p> - 10 points d'actions <img class="icons" src="etoile.png"> et en perd 1 pour chaque action utilisée.</p>
+            <p> - 1 point de mouvement <img class="icons" src="fleche.png"> et en perd 1 a chaque déplacement.</p>
+        </ul>
+        <h2>Quatre actions sont disponibles</h2>
+        <div class="description_action"><img class="action"src="deplacement_rapide.png"><p><strong>Déplacement rapide</strong>: rajoute un point de mouvement pour 1 tour.</p></div>
+        <div class="description_action"><img class="action"src="decalage.png"> <p><strong>Décalage</strong>: Permet de pousser de une case tous les murs à votre contact.</p></div>
+        <div class="description_action"><img class="action"src="placidite.png"><p><strong>Placidité</strong>: réduit l'intervalle de relance de <strong>déplacement rapide</strong> et <strong>Décalage</strong>.</p></div>
+        <div class="description_action"><img class="action"src="ragekit.png"><p><strong>Ragekit</strong>: réinitialise le labyrinthe.</p></div>
+        <a href="req_laby"><button>Je suis prêt !</button></a>
+    </div>
+        <img id="capture_laby" src="capture_laby.PNG">
+</body>
+</html>
