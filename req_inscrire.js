@@ -23,8 +23,6 @@ const trait = function (req, res, query) {
 	let listeMembres;
 	let i;
 	let trouve;
-	let valide_trouve;
-	let valide_pw = query.password === query.repassword;
 	let valide;
 
 	// ON LIT LES COMPTES EXISTANTS
@@ -44,9 +42,7 @@ const trait = function (req, res, query) {
 	}
 
 	// SI PAS TROUVE, ON AJOUTE LE NOUVEAU COMPTE DANS LA LISTE DES COMPTES
-	//valide = trouve === false && query.password === query.repassword 
-	valide_trouve = trouve === false;
-	valide = valide_trouve && valide_pw;
+	valide = trouve === false && query.password === query.repassword 
 	if (valide) {
 		nouveauMembre = {};
 		nouveauMembre.pseudo = query.pseudo;
@@ -68,15 +64,7 @@ const trait = function (req, res, query) {
 		page = fs.readFileSync('modele_formulaire_inscription.html', 'utf-8');
 
 		marqueurs = {};
-		marqueurs.erreur ='<p class="erreur">';
-		console.log(valide_pw);
-		if (valide_trouve === false){
-			marqueurs.erreur  += "ERREUR : Ce compte existe déjà <br>"
-		}	
-		if (valide_pw === false){
-			marqueurs.erreur += "ERREUR : Les mots de passes ne correspondent pas"
-		}
-		marqueurs.erreur += "</p>";
+		marqueurs.erreur = "ERREUR : ce compte existe déjà";
 		marqueurs.pseudo = query.pseudo;
 		page = page.supplant(marqueurs);
 
